@@ -1,0 +1,175 @@
+/* Aurevia Sovereign — tactile skeuomorphic design layer.
+   Deliberately presentation-only: no account, ledger, or trading behavior is changed. */
+:root {
+  color-scheme: dark;
+  --a-ink: #07100c;
+  --a-forest: #0b1a12;
+  --a-forest-soft: #10251a;
+  --a-panel: #102016;
+  --a-panel-raised: #172c20;
+  --a-line: rgba(210, 181, 112, .2);
+  --a-muted: #a1afa4;
+  --a-paper: #f2f0e6;
+  --a-brass: #c5a46b;
+  --a-brass-soft: #e4cb91;
+  --a-brass-deep: #765521;
+  --a-shadow-deep: rgba(0, 0, 0, .58);
+  --a-shadow-light: rgba(255, 255, 255, .055);
+}
+
+html, body { background-color: var(--a-ink); color: var(--a-paper); }
+body {
+  background-image:
+    radial-gradient(ellipse at 12% 0%, rgba(30, 73, 47, .24), transparent 43%),
+    radial-gradient(ellipse at 94% 25%, rgba(170, 127, 47, .055), transparent 38%),
+    linear-gradient(145deg, #09150e 0%, #07100c 48%, #0b1710 100%);
+  background-attachment: fixed;
+}
+::selection { background: rgba(197, 164, 107, .36); color: #fff9e8; }
+
+/* A subtle material grain, built from CSS gradients rather than heavy image assets. */
+.scene-depth {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(28, 75, 47, .25), transparent 50%),
+    repeating-linear-gradient(118deg, rgba(255,255,255,.008) 0 1px, transparent 1px 5px),
+    #07100c;
+}
+.site-nav {
+  border-bottom: 1px solid rgba(197, 164, 107, .25);
+  background: linear-gradient(180deg, rgba(18, 36, 24, .97), rgba(7, 17, 11, .96));
+  box-shadow: 0 9px 28px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.055);
+}
+.brand b, .gold, .eyebrow { color: var(--a-brass-soft); }
+
+/* Panels have a raised rim, a deep lower shadow and a soft inner highlight. */
+.card,
+.dashboard-preview,
+.preview-window,
+.principle-item,
+.asset-item,
+.education-grid article,
+.trade-steps > div,
+.home-market-preview,
+.auth-card,
+.admin-login-card,
+.country-picker-dialog,
+.dropdown-panel,
+.language-menu {
+  border: 1px solid rgba(197, 164, 107, .23);
+  background:
+    linear-gradient(145deg, rgba(24, 45, 30, .98), rgba(9, 21, 13, .99));
+  box-shadow:
+    0 18px 38px var(--a-shadow-deep),
+    0 3px 0 rgba(0,0,0,.38),
+    inset 0 1px 0 rgba(255,255,255,.075),
+    inset 0 -1px 0 rgba(0,0,0,.35);
+}
+.card:before {
+  background: linear-gradient(135deg, rgba(255,255,255,.065), transparent 28%, transparent 72%, rgba(197,164,107,.055));
+  opacity: 1;
+}
+.card:hover {
+  border-color: rgba(228, 203, 145, .42);
+  box-shadow: 0 24px 48px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.085);
+}
+
+/* Controls feel like physical switches and machined buttons, with visible press states. */
+.btn,
+button.btn,
+.button-primary,
+.button-secondary,
+.nav-cta,
+button[type="submit"] {
+  border: 1px solid rgba(228, 203, 145, .44);
+  border-radius: 9px;
+  background: linear-gradient(180deg, #d7bd80 0%, #b58d4d 52%, #8b6834 100%);
+  color: #15170f;
+  text-shadow: 0 1px 0 rgba(255,255,255,.22);
+  box-shadow: 0 4px 0 #594321, 0 8px 18px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.46), inset 0 -2px 0 rgba(64,43,14,.26);
+  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+}
+.btn:hover,
+.button-primary:hover,
+.button-secondary:hover,
+button[type="submit"]:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #594321, 0 11px 22px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.5);
+}
+.btn:active,
+.button-primary:active,
+.button-secondary:active,
+button[type="submit"]:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #594321, 0 3px 8px rgba(0,0,0,.3), inset 0 2px 4px rgba(55,35,10,.25);
+}
+.btn:disabled,
+button:disabled { filter: grayscale(.35); opacity: .6; cursor: not-allowed; transform: none; }
+.button-secondary,
+.btn-secondary {
+  background: linear-gradient(180deg, #203a29, #102117);
+  color: #e9e4d5;
+  border-color: rgba(197,164,107,.3);
+  box-shadow: 0 3px 0 #050b07, 0 7px 15px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.09), inset 0 -1px 0 rgba(0,0,0,.35);
+}
+
+/* Form fields sit inside the surface instead of floating above it. */
+.input,
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+select,
+textarea {
+  border-color: rgba(197,164,107,.25);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #050d08, #0a160e);
+  color: #f2f0e6;
+  box-shadow: inset 0 3px 8px rgba(0,0,0,.42), inset 0 1px 0 rgba(0,0,0,.55), 0 1px 0 rgba(255,255,255,.025);
+}
+.input:focus,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  border-color: rgba(228,203,145,.8);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,.36), 0 0 0 3px rgba(197,164,107,.13);
+  outline: none;
+}
+input::placeholder, textarea::placeholder { color: #7f9083; }
+input[type="checkbox"], input[type="radio"] { accent-color: #c5a46b; }
+
+/* Tabs, switches, menu items and small status elements retain strong contrast. */
+.nav-links a:hover,
+.nav-links button:hover,
+.nav-links a.nav-active,
+.nav-links a[aria-current="page"] {
+  background: linear-gradient(180deg, rgba(197,164,107,.16), rgba(197,164,107,.045));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07), inset 0 -1px 0 rgba(0,0,0,.3);
+  color: #fff4d7;
+}
+.nav-links .nav-cta { background: linear-gradient(180deg, #d7bd80, #9a7339) !important; color: #15170f !important; }
+.menu-button,
+.country-picker-close,
+.language-selector-trigger {
+  border-color: rgba(197,164,107,.3);
+  background: linear-gradient(180deg, #1a3021, #0b1910);
+  box-shadow: 0 3px 0 #030805, inset 0 1px 0 rgba(255,255,255,.08);
+}
+.dropdown-panel, .language-menu { background: linear-gradient(145deg,#15291b,#08130c); }
+
+/* Data surfaces: crisp separators and legible numbers. */
+table { border-collapse: separate; border-spacing: 0; }
+th { color: #e4cb91; background: rgba(197,164,107,.075); }
+th, td { border-bottom: 1px solid rgba(197,164,107,.12); }
+tr:hover td { background: rgba(197,164,107,.035); }
+.paper-environment-footer {
+  border-top-color: rgba(197,164,107,.2);
+  background: linear-gradient(180deg, rgba(12,27,17,.92), rgba(5,13,8,.98));
+}
+.paper-environment-footer strong { color: #e4cb91; }
+
+/* Respect reduced motion and retain usable mobile hit areas. */
+@media (max-width: 767px) {
+  .btn, .button-primary, .button-secondary, button[type="submit"] { min-height: 44px; }
+  .card:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
